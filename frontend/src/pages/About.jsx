@@ -6,19 +6,19 @@ const About = () => {
     {
       name: "Yosef Agegnehu",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      image: "/Yosef.jpg",
       description: "Visionary leader with 10+ years in e-commerce and technology innovation."
     },
     {
-      name: "Sarah Johnson",
+      name: "Anduamlak Desalegn",
       role: "CTO",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+      image: "/Anduamlak.jpg",
       description: "Technology expert passionate about building scalable and secure platforms."
     },
     {
-      name: "Michael Chen",
+      name: "Zelalem Mengistu",
       role: "Head of Operations",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      image: "/Zelalem.jpg",
       description: "Operations specialist ensuring smooth logistics and customer satisfaction."
     },
     {
