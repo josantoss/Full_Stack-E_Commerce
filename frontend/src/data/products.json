@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Bluetooth Headphones",
+    "description": "High-quality wireless headphones with noise cancellation and long battery life. Perfect for music lovers and professionals.",
+    "price": 89.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+    "stock_quantity": 50,
+    "is_active": true,
+    "created_at": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Smart Fitness Watch",
+    "description": "Advanced fitness tracker with heart rate monitor, GPS, and water resistance. Track your workouts and health metrics.",
+    "price": 199.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+    "stock_quantity": 30,
+    "is_active": true,
+    "created_at": "2024-01-14T09:30:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Organic Cotton T-Shirt",
+    "description": "Comfortable and eco-friendly cotton t-shirt made from 100% organic materials. Available in multiple colors.",
+    "price": 24.99,
+    "category": "Clothing",
+    "image_url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+    "stock_quantity": 100,
+    "is_active": true,
+    "created_at": "2024-01-13T14:20:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Stainless Steel Water Bottle",
+    "description": "Durable stainless steel water bottle that keeps drinks cold for 24 hours or hot for 12 hours. Eco-friendly alternative to plastic.",
+    "price": 19.99,
+    "category": "Home & Garden",
+    "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop",
+    "stock_quantity": 75,
+    "is_active": true,
+    "created_at": "2024-01-12T11:45:00Z"
+  },
+  {
+    "id": 5,
+    "name": "Professional Camera Lens",
+    "description": "High-quality camera lens for professional photography. Compatible with most DSLR and mirrorless cameras.",
+    "price": 599.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop",
+    "stock_quantity": 15,
+    "is_active": true,
+    "created_at": "2024-01-11T16:15:00Z"
+  },
+  {
+    "id": 6,
+    "name": "Yoga Mat Premium",
+    "description": "Non-slip yoga mat made from eco-friendly materials. Perfect thickness for comfort and stability during practice.",
+    "price": 34.99,
+    "category": "Sports & Fitness",
+    "image_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop",
+    "stock_quantity": 60,
+    "is_active": true,
+    "created_at": "2024-01-10T13:30:00Z"
+  },
+  {
+    "id": 7,
+    "name": "Wireless Charging Pad",
+    "description": "Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design that fits any home or office decor.",
+    "price": 39.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1609592806598-ef3b5b5b0b0a?w=400&h=400&fit=crop",
+    "stock_quantity": 40,
+    "is_active": true,
+    "created_at": "2024-01-09T10:20:00Z"
+  },
+  {
+    "id": 8,
+    "name": "Natural Face Moisturizer",
+    "description": "Hydrating face moisturizer made with natural ingredients. Suitable for all skin types and free from harmful chemicals.",
+    "price": 29.99,
+    "category": "Beauty & Health",
+    "image_url": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+    "stock_quantity": 80,
+    "is_active": true,
+    "created_at": "2024-01-08T15:45:00Z"
+  },
+  {
+    "id": 9,
+    "name": "Portable Bluetooth Speaker",
+    "description": "Compact and powerful Bluetooth speaker with 360-degree sound. Waterproof design perfect for outdoor activities.",
+    "price": 79.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
+    "stock_quantity": 45,
+    "is_active": true,
+    "created_at": "2024-01-07T12:10:00Z"
+  },
+  {
+    "id": 10,
+    "name": "Leather Wallet",
+    "description": "Genuine leather wallet with multiple card slots and RFID protection. Classic design that never goes out of style.",
+    "price": 49.99,
+    "category": "Fashion",
+    "image_url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=400&fit=crop",
+    "stock_quantity": 65,
+    "is_active": true,
+    "created_at": "2024-01-06T09:25:00Z"
+  },
+  {
+    "id": 11,
+    "name": "Smart Home Hub",
+    "description": "Central control hub for all your smart home devices. Compatible with Alexa, Google Assistant, and Apple HomeKit.",
+    "price": 149.99,
+    "category": "Electronics",
+    "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
+    "stock_quantity": 25,
+    "is_active": true,
+    "created_at": "2024-01-05T14:50:00Z"
+  },
+  {
+    "id": 12,
+    "name": "Organic Tea Set",
+    "description": "Beautiful ceramic tea set made from natural materials. Perfect for hosting tea parties or enjoying quiet moments.",
+    "price": 64.99,
+    "category": "Home & Garden",
+    "image_url": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop",
+    "stock_quantity": 35,
+    "is_active": true,
+    "created_at": "2024-01-04T11:15:00Z"
+  }
+]
