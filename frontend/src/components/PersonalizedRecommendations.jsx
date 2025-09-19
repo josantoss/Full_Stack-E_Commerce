@@ -176,7 +176,7 @@ const PersonalizedRecommendations = ({ limit = 6 }) => {
                 
                 <div className="text-right">
                   <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                    ${product.price}
+{product.price?.toLocaleString()} {product.currency || 'ETB'}
                   </p>
                   {preferences.shopping.showPriceHistory && product.originalPrice && product.originalPrice > product.price && (
                     <p className="text-sm text-gray-500 dark:text-gray-400 line-through">

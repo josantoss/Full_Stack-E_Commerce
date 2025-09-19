@@ -141,7 +141,7 @@ const RecentlyViewed = ({ limit = 8, showTitle = true, showActions = true }) => 
                 </h4>
               </Link>
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-blue-600">${product.price}</span>
+                <span className="text-sm font-bold text-blue-600">{product.price?.toLocaleString()} {product.currency || 'ETB'}</span>
                 <span className="text-xs text-gray-500">
                   {new Date(product.viewed_at).toLocaleDateString()}
                 </span>

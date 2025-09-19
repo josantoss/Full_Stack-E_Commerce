@@ -49,7 +49,7 @@ const ProductComparison = ({ isOpen, onClose }) => {
   const getFeatureValue = (product, feature) => {
     switch (feature.key) {
       case 'price':
-        return `$${product.price}`;
+        return `${product.price?.toLocaleString()} ${product.currency || 'ETB'}`;
       case 'description':
         return product.description ? product.description.substring(0, 100) + '...' : 'N/A';
       case 'stock_quantity':

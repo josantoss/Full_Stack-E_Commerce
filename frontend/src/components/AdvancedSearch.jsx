@@ -276,7 +276,7 @@ const AdvancedSearch = ({ onClose, isOpen }) => {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-medium text-gray-900">{product.name}</h4>
-                        <p className="text-sm text-gray-600">${product.price}</p>
+                        <p className="text-sm text-gray-600">{product.price?.toLocaleString()} {product.currency || 'ETB'}</p>
                       </div>
                     </button>
                   ))}
@@ -336,7 +336,7 @@ const AdvancedSearch = ({ onClose, isOpen }) => {
                             {product.name}
                           </h4>
                           <div className="flex items-center justify-between">
-                            <span className="text-sm font-bold text-blue-600">${product.price}</span>
+                            <span className="text-sm font-bold text-blue-600">{product.price?.toLocaleString()} {product.currency || 'ETB'}</span>
                             <div className="flex items-center">
                               <FaStar className="text-yellow-400 w-3 h-3" />
                               <span className="text-xs text-gray-600 ml-1">4.5</span>

@@ -158,8 +158,8 @@ const Products = () => {
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="name">Sort by Name</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
+              <option value="price-low">Price: Low to High (ETB)</option>
+              <option value="price-high">Price: High to Low (ETB)</option>
             </select>
           </div>
 
@@ -184,7 +184,7 @@ const Products = () => {
 
                 {/* Price Range */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Min Price</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Min Price (ETB)</label>
                   <input
                     type="number"
                     placeholder="0"
@@ -195,7 +195,7 @@ const Products = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Max Price</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Max Price (ETB)</label>
                   <input
                     type="number"
                     placeholder="1000"
@@ -320,7 +320,7 @@ const Products = () => {
                   </p>
                   
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl font-bold text-blue-600">${product.price}</span>
+                    <span className="text-2xl font-bold text-blue-600">{product.price?.toLocaleString()} {product.currency || 'ETB'}</span>
                     <div className="flex items-center">
                       <FaStar className="text-yellow-400 w-4 h-4" />
                       <span className="text-sm text-gray-600 ml-1">4.5</span>

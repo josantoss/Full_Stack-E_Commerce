@@ -209,7 +209,7 @@ const ProductDetail = () => {
                     <span className="ml-2 text-sm text-gray-600">4.5 (128 reviews)</span>
                   </div>
                 </div>
-                <p className="text-2xl font-bold text-blue-600">${product.price}</p>
+                <p className="text-2xl font-bold text-blue-600">{product.price?.toLocaleString()} {product.currency || 'ETB'}</p>
               </div>
 
               <div>
