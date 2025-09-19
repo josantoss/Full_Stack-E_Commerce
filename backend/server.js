@@ -3,6 +3,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
+const xss = require('xss-clean');
 require('dotenv').config();
 
 const { connectDB } = require('./config/db');
@@ -16,6 +18,7 @@ const contactRoutes = require('./routes/contactRoutes');
 const wishlistRoutes = require('./routes/wishlistRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const recentlyViewedRoutes = require('./routes/recentlyViewedRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,19 +26,49 @@ const PORT = process.env.PORT || 5000;
 // Connect to database
 connectDB();
 
-// Security middleware
-app.use(helmet());
+// Advanced Security middleware
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      scriptSrc: ["'self'"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'"],
+      frameSrc: ["'none'"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+  }
+}));
+
+// XSS Protection
+app.use(xss());
+
+// HTTP Parameter Pollution Protection
+app.use(hpp());
+
+// CORS Configuration
 app.use(cors({
   origin: (origin, callback) => {
     if (process.env.NODE_ENV === 'production') {
-      const allowed = ['https://yourdomain.com']
+      const allowed = ['https://yourdomain.com', 'https://full-stack-e-commerce-black.vercel.app']
       return callback(null, allowed.includes(origin))
     }
     // In development, allow common localhost ports
-    const devAllowed = ['http://localhost:3000', 'http://localhost:3001']
+    const devAllowed = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173']
     return callback(null, !origin || devAllowed.includes(origin))
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Rate limiting
@@ -63,6 +96,7 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/recently-viewed', recentlyViewedRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
