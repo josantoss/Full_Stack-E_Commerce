@@ -9,6 +9,7 @@ yarn-error.log*
 pnpm-debug.log*
 backend/.env
 frontend/.env
+SECURITY.md
 .DS_Store
 Thumbs.db
 .vscode/

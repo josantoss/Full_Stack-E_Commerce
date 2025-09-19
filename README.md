@@ -301,7 +301,7 @@ cp env.example .env
 # Edit .env with your database credentials and JWT secret
 ```
 
-**⚠️ Security Note**: Never commit the `.env` file to version control. See `SECURITY.md` for detailed security guidelines.
+**⚠️ Security Note**: Never commit the `.env` file to version control. Contact the development team for security guidelines.
 
 ### 3. Install Dependencies
 ```bash
@@ -377,7 +377,7 @@ The application uses a relational database design with proper normalization, for
 - **Soft Deletes**: Safe deletion with status flags where appropriate
 - **Indexing**: Optimized queries with strategic indexing
 
-**Note**: Detailed database schema is available in the development environment. See `SECURITY.md` for database setup guidelines.
+**Note**: Detailed database schema is available in the development environment. Contact the development team for database setup guidelines.
 
 ## 🎨 Frontend Structure
 
