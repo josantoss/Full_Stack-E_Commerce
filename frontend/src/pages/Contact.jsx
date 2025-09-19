@@ -45,7 +45,7 @@ const Contact = () => {
     {
       icon: <FaPhone className="w-6 h-6" />,
       title: 'Phone Numbers',
-      content: 'Main: +251 11 123 4567\nMobile: +251 93 409 9170\nToll Free: +251 800 123 456'
+      content: 'Main: +251-934-099-170\nSupport: +251-905-002-714\nSales: +251-911-257-421'
     },
     {
       icon: <FaEnvelope className="w-6 h-6" />,

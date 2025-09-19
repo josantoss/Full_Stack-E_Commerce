@@ -123,7 +123,7 @@ const Footer = () => {
                   <FaMapMarkerAlt className="w-3 h-3 text-white" />
                 </div>
                 <div>
-                  <p className="text-gray-300 text-sm">123 Shopping Street</p>
+                  <p className="text-gray-300 text-sm">Dembel City Center, 3rd Floor</p>
                   <p className="text-gray-300 text-sm">Addis Ababa, Ethiopia</p>
                 </div>
               </div>
@@ -131,7 +131,7 @@ const Footer = () => {
                 <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <FaPhone className="w-3 h-3 text-white" />
                 </div>
-                <span className="text-gray-300 text-sm">+251 911 123 456</span>
+                <span className="text-gray-300 text-sm">+251-934-099-170</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
