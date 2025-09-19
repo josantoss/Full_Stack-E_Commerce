@@ -293,38 +293,17 @@ git clone <repository-url>
 cd AradaBuy
 ```
 
-### 2. Database Setup
-Create a MySQL user and database:
-```sql
-CREATE USER 'AradaBuy'@'localhost' IDENTIFIED BY '102230';
-GRANT ALL PRIVILEGES ON *.* TO 'AradaBuy'@'localhost';
-FLUSH PRIVILEGES;
+### 2. Environment Setup
+Copy the environment template and configure your settings:
+```bash
+cd backend
+cp env.example .env
+# Edit .env with your database credentials and JWT secret
 ```
 
-### 3. Environment Configuration
-Create `.env` file in the `backend/` directory:
-```env
-# Database Configuration
-DB_HOST=localhost
-DB_USER=AradaBuy
-DB_PASSWORD=102230
-DB_NAME=AradaBuy
-DB_PORT=3306
+**⚠️ Security Note**: Never commit the `.env` file to version control. See `SECURITY.md` for detailed security guidelines.
 
-# JWT Configuration
-JWT_SECRET=aradabuy_super_secret_jwt_key_2024
-JWT_EXPIRES_IN=7d
-
-# Server Configuration
-PORT=5000
-NODE_ENV=development
-
-# Rate Limiting
-RATE_LIMIT_WINDOW_MS=900000
-RATE_LIMIT_MAX_REQUESTS=100
-```
-
-### 4. Install Dependencies
+### 3. Install Dependencies
 ```bash
 # Install backend dependencies
 cd backend
@@ -335,7 +314,7 @@ cd ../frontend
 npm install
 ```
 
-### 5. Start the Application
+### 4. Start the Application
 ```bash
 # Terminal 1: Start backend (from backend/ directory)
 cd backend
@@ -355,223 +334,19 @@ The application will be available at:
 ### API Overview
 The AradaBuy API follows RESTful principles with consistent response formats, proper HTTP status codes, and comprehensive error handling. All endpoints return JSON responses and include appropriate CORS headers.
 
-### Base URL
-```
-Development: http://localhost:5000/api
-Production: https://yourdomain.com/api
-```
+### Available Endpoints
+- **Authentication**: User registration, login, profile management
+- **Products**: Product catalog, search, filtering, and management
+- **Orders**: Order creation, tracking, and history
+- **Contact**: Contact form submission and management
 
-### Response Format
-```json
-{
-  "success": true/false,
-  "message": "Human readable message",
-  "data": { /* Response data */ },
-  "error": "Error details (if applicable)"
-}
-```
+### Security Features
+- **JWT Authentication**: Secure token-based authentication
+- **Rate Limiting**: API abuse prevention
+- **Input Validation**: Comprehensive request validation
+- **CORS Protection**: Cross-origin request handling
 
-### Authentication Endpoints
-
-#### User Registration
-```http
-POST /api/auth/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "securePassword123",
-  "phone": "+1234567890",
-  "address": "123 Main St, City, Country"
-}
-```
-**Response**: 201 Created with JWT token
-**Validation**: Name, email, password required; phone, address optional
-
-#### User Login
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "securePassword123"
-}
-```
-**Response**: 200 OK with JWT token
-**Validation**: Email and password required
-
-#### Get Current User Profile
-```http
-GET /api/auth/me
-Authorization: Bearer <JWT_TOKEN>
-```
-**Response**: 200 OK with user data
-**Access**: Protected route (requires authentication)
-
-#### Update User Profile
-```http
-PUT /api/auth/profile
-Authorization: Bearer <JWT_TOKEN>
-Content-Type: application/json
-
-{
-  "name": "John Smith",
-  "phone": "+1987654321",
-  "address": "456 Oak Ave, Town, Country"
-}
-```
-**Response**: 200 OK with updated user data
-**Access**: Protected route (requires authentication)
-
-#### Change Password
-```http
-PUT /api/auth/change-password
-Authorization: Bearer <JWT_TOKEN>
-Content-Type: application/json
-
-{
-  "currentPassword": "oldPassword123",
-  "newPassword": "newSecurePassword456"
-}
-```
-**Response**: 200 OK with success message
-**Access**: Protected route (requires authentication)
-
-### Product Endpoints
-
-#### Get All Products
-```http
-GET /api/products?page=1&limit=10&category=electronics&search=laptop&sort=price_asc
-```
-**Query Parameters**:
-- `page`: Page number (default: 1)
-- `limit`: Items per page (default: 10, max: 50)
-- `category`: Filter by product category
-- `search`: Search in product name/description
-- `sort`: Sort order (price_asc, price_desc, name_asc, name_desc, newest)
-
-#### Get Single Product
-```http
-GET /api/products/123
-```
-**Response**: 200 OK with product details
-**Includes**: Product info, stock status, category, images
-
-#### Get Featured Products
-```http
-GET /api/products/featured
-```
-**Response**: 200 OK with featured product list
-**Purpose**: Display on homepage and promotional areas
-
-#### Get Product Categories
-```http
-GET /api/products/categories
-```
-**Response**: 200 OK with category list
-**Purpose**: Filter options and navigation
-
-#### Create Product (Admin Only)
-```http
-POST /api/products
-Authorization: Bearer <ADMIN_JWT_TOKEN>
-Content-Type: application/json
-
-{
-  "name": "Premium Laptop",
-  "description": "High-performance laptop for professionals",
-  "price": 1299.99,
-  "category": "electronics",
-  "image_url": "https://example.com/laptop.jpg",
-  "stock_quantity": 25
-}
-```
-**Response**: 201 Created with product data
-**Access**: Admin only
-
-### Order Endpoints
-
-#### Create New Order
-```http
-POST /api/orders
-Authorization: Bearer <JWT_TOKEN>
-Content-Type: application/json
-
-{
-  "items": [
-    {
-      "product_id": 123,
-      "quantity": 2,
-      "price": 1299.99
-    }
-  ],
-  "shipping_address": "123 Main St, City, Country",
-  "total_amount": 2599.98
-}
-```
-**Response**: 201 Created with order details
-**Features**: Automatic stock updates, order validation
-
-#### Get User's Orders
-```http
-GET /api/orders/my-orders?page=1&limit=10
-Authorization: Bearer <JWT_TOKEN>
-```
-**Response**: 200 OK with paginated order list
-**Includes**: Order status, items, totals, timestamps
-
-#### Get Single Order
-```http
-GET /api/orders/456
-Authorization: Bearer <JWT_TOKEN>
-```
-**Response**: 200 OK with complete order details
-**Access**: Order owner or admin
-
-### Contact Endpoints
-
-#### Submit Contact Form
-```http
-POST /api/contact
-Content-Type: application/json
-
-{
-  "name": "Jane Doe",
-  "email": "jane@example.com",
-  "subject": "Product Inquiry",
-  "message": "I have a question about your products."
-}
-```
-**Response**: 201 Created with confirmation
-**Purpose**: Customer support and inquiries
-
-### Error Handling
-
-#### HTTP Status Codes
-- **200**: Success
-- **201**: Created
-- **400**: Bad Request (validation errors)
-- **401**: Unauthorized (missing/invalid token)
-- **403**: Forbidden (insufficient permissions)
-- **404**: Not Found
-- **500**: Internal Server Error
-
-#### Error Response Format
-```json
-{
-  "success": false,
-  "message": "Validation failed",
-  "error": "Email is required",
-  "statusCode": 400
-}
-```
-
-### Rate Limiting
-- **Window**: 15 minutes (900,000 ms)
-- **Limit**: 100 requests per window
-- **Headers**: Include remaining requests and reset time
+**Note**: Detailed API documentation is available in the development environment. Contact the development team for access to complete API specifications.
 
 ## 🔐 Authentication
 
@@ -589,124 +364,20 @@ The application uses JWT (JSON Web Tokens) for authentication:
 The application uses a relational database design with proper normalization, foreign key constraints, and automatic timestamp management. All tables include audit fields for tracking creation and modification times.
 
 ### Core Tables
+- **Users**: User account information and authentication data
+- **Products**: Product catalog and inventory management
+- **Orders**: Customer orders and their lifecycle tracking
+- **Order Items**: Individual items within each order
+- **Contact Messages**: Customer inquiries and support requests
 
-#### Users Table
-```sql
-CREATE TABLE users (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  role ENUM('user', 'admin') DEFAULT 'user',
-  phone VARCHAR(20),
-  address TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-```
-**Purpose**: Stores user account information and authentication data
-**Key Features**: 
-- Unique email constraint for login identification
-- Role-based access control (user/admin)
-- Optional phone and address fields
-- Automatic timestamp management
+### Database Features
+- **Relational Design**: Proper normalization with foreign key constraints
+- **Data Integrity**: Unique constraints and referential integrity
+- **Audit Trail**: Automatic timestamp management for all records
+- **Soft Deletes**: Safe deletion with status flags where appropriate
+- **Indexing**: Optimized queries with strategic indexing
 
-#### Products Table
-```sql
-CREATE TABLE products (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL,
-  description TEXT,
-  price DECIMAL(10,2) NOT NULL,
-  category VARCHAR(100),
-  image_url VARCHAR(500),
-  stock_quantity INT DEFAULT 0,
-  is_active BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-```
-**Purpose**: Manages product catalog and inventory
-**Key Features**:
-- Flexible category system for product organization
-- Stock quantity tracking for inventory management
-- Soft delete with is_active flag
-- Image URL support for product visuals
-
-#### Orders Table
-```sql
-CREATE TABLE orders (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  total_amount DECIMAL(10,2) NOT NULL,
-  status ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
-  shipping_address TEXT NOT NULL,
-  payment_status ENUM('pending', 'paid', 'failed') DEFAULT 'pending',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-```
-**Purpose**: Tracks customer orders and their lifecycle
-**Key Features**:
-- Order status tracking from creation to delivery
-- Payment status monitoring
-- Shipping address storage
-- Cascading delete with user accounts
-
-#### Order Items Table
-```sql
-CREATE TABLE order_items (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  order_id INT NOT NULL,
-  product_id INT NOT NULL,
-  quantity INT NOT NULL,
-  price DECIMAL(10,2) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
-);
-```
-**Purpose**: Stores individual items within each order
-**Key Features**:
-- Links orders to specific products
-- Captures quantity and price at time of purchase
-- Maintains order history integrity
-
-#### Contact Messages Table
-```sql
-CREATE TABLE contact_messages (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  subject VARCHAR(200),
-  message TEXT NOT NULL,
-  is_read BOOLEAN DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-**Purpose**: Manages customer inquiries and support requests
-**Key Features**:
-- Contact form submission storage
-- Read/unread status tracking
-- Timestamp for response time monitoring
-
-### Database Relationships
-- **Users → Orders**: One-to-many (one user can have multiple orders)
-- **Orders → Order Items**: One-to-many (one order contains multiple items)
-- **Products → Order Items**: One-to-many (one product can be in multiple orders)
-
-### Indexing Strategy
-- **Primary Keys**: Auto-incrementing IDs for fast lookups
-- **Unique Indexes**: Email addresses for user identification
-- **Foreign Keys**: Referential integrity enforcement
-- **Timestamp Indexes**: Efficient date-based queries
-
-### Data Integrity Features
-- **Foreign Key Constraints**: Ensures referential integrity
-- **Cascade Deletes**: Maintains data consistency
-- **Unique Constraints**: Prevents duplicate data
-- **NOT NULL Constraints**: Ensures required data presence
+**Note**: Detailed database schema is available in the development environment. See `SECURITY.md` for database setup guidelines.
 
 ## 🎨 Frontend Structure
 
