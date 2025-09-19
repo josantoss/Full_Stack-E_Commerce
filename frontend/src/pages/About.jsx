@@ -20,12 +20,6 @@ const About = () => {
       role: "Head of Operations",
       image: "/Zelalem.jpg",
       description: "Operations specialist ensuring smooth logistics and customer satisfaction."
-    },
-    {
-      name: "Amina Hassan",
-      role: "Marketing Director",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-      description: "Creative marketer connecting brands with customers across Ethiopia."
     }
   ];
 
