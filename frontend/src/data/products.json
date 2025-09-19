@@ -54,7 +54,7 @@
     "price": 250000,
     "currency": "ETB",
     "category": "Watches",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5c6a6f1e6f1?w=400&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400&h=400&fit=crop",
     "stock_quantity": 15,
     "is_active": true,
     "created_at": "2024-01-11T16:15:00Z"
@@ -90,7 +90,7 @@
     "price": 8500,
     "currency": "ETB",
     "category": "Watches",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5c6a6f1e6f1?w=400&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=400&h=400&fit=crop",
     "stock_quantity": 80,
     "is_active": true,
     "created_at": "2024-01-08T15:45:00Z"
@@ -126,7 +126,7 @@
     "price": 180000,
     "currency": "ETB",
     "category": "Watches",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5c6a6f1e6f1?w=400&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop",
     "stock_quantity": 25,
     "is_active": true,
     "created_at": "2024-01-05T14:50:00Z"
