@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaLock, FaEye, FaEyeSlash, FaCog } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../context/AuthContext';
+import UserAvatar from '../components/UserAvatar';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const { user, updateProfile, changePassword } = useContext(AuthContext);
@@ -127,21 +129,21 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Profile</h1>
-          <p className="text-gray-600">Manage your account information and preferences</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">My Profile</h1>
+          <p className="text-gray-600 dark:text-gray-400">Manage your account information and preferences</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Profile Information */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Profile Information</h2>
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Profile Information</h2>
                   {!isEditing ? (
                     <button
                       onClick={() => setIsEditing(true)}
@@ -180,12 +182,10 @@ const Profile = () => {
                 <div className="space-y-6">
                   {/* Profile Picture */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
-                      <FaUser className="w-10 h-10 text-white" />
-                    </div>
+                    <UserAvatar size="xl" showUpload={isEditing} />
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900">{user.name}</h3>
-                      <p className="text-gray-500">Member since {new Date().getFullYear()}</p>
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white">{user.name}</h3>
+                      <p className="text-gray-500 dark:text-gray-400">Member since {new Date().getFullYear()}</p>
                     </div>
                   </div>
 
@@ -255,10 +255,10 @@ const Profile = () => {
             </div>
 
             {/* Change Password Section */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden mt-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Change Password</h2>
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Change Password</h2>
                   {!isChangingPassword ? (
                     <button
                       onClick={() => setIsChangingPassword(true)}
@@ -363,41 +363,44 @@ const Profile = () => {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sticky top-8">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
               <div className="space-y-3">
-                <button className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="font-medium text-gray-900">My Orders</div>
-                  <div className="text-sm text-gray-500">View order history</div>
+                <Link to="/orders" className="block w-full text-left p-3 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <div className="font-medium text-gray-900 dark:text-white">My Orders</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">View order history</div>
+                </Link>
+                <Link to="/wishlist" className="block w-full text-left p-3 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <div className="font-medium text-gray-900 dark:text-white">Wishlist</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">Saved items</div>
+                </Link>
+                <button className="w-full text-left p-3 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <div className="font-medium text-gray-900 dark:text-white">Addresses</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">Manage shipping addresses</div>
                 </button>
-                <button className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="font-medium text-gray-900">Wishlist</div>
-                  <div className="text-sm text-gray-500">Saved items</div>
-                </button>
-                <button className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="font-medium text-gray-900">Addresses</div>
-                  <div className="text-sm text-gray-500">Manage shipping addresses</div>
-                </button>
-                <button className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="font-medium text-gray-900">Preferences</div>
-                  <div className="text-sm text-gray-500">Email & notification settings</div>
-                </button>
+                <Link to="/personalization" className="block w-full text-left p-3 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <div className="font-medium text-gray-900 dark:text-white flex items-center">
+                    <FaCog className="w-4 h-4 mr-2" />
+                    Personalization
+                  </div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">Customize your experience</div>
+                </Link>
               </div>
 
               {/* Account Status */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <h4 className="font-medium text-gray-900 mb-3">Account Status</h4>
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Account Status</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Email Verified</span>
+                    <span className="text-gray-600 dark:text-gray-400">Email Verified</span>
                     <span className="text-green-600 font-medium">✓ Verified</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Phone Verified</span>
+                    <span className="text-gray-600 dark:text-gray-400">Phone Verified</span>
                     <span className="text-gray-400">Not verified</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Two-Factor Auth</span>
+                    <span className="text-gray-600 dark:text-gray-400">Two-Factor Auth</span>
                     <span className="text-gray-400">Disabled</span>
                   </div>
                 </div>

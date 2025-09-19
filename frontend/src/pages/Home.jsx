@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaStar, FaShoppingCart, FaTruck, FaShieldAlt, FaHeadset, FaCreditCard } from 'react-icons/fa';
 import RecentlyViewed from '../components/RecentlyViewed';
+import PersonalizedRecommendations from '../components/PersonalizedRecommendations';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -185,8 +186,15 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Personalized Recommendations Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PersonalizedRecommendations limit={6} />
+        </div>
+      </section>
+
       {/* Recently Viewed Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RecentlyViewed limit={8} />
         </div>

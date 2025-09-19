@@ -13,6 +13,7 @@ import Checkout from './pages/Checkout.jsx'
 import Profile from './pages/Profile.jsx'
 import Orders from './pages/Orders.jsx'
 import Wishlist from './pages/Wishlist.jsx'
+import Personalization from './pages/Personalization.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function App() {
@@ -48,6 +49,11 @@ function App() {
           <Route path="/orders" element={
             <ProtectedRoute>
               <Orders />
+            </ProtectedRoute>
+          } />
+          <Route path="/personalization" element={
+            <ProtectedRoute>
+              <Personalization />
             </ProtectedRoute>
           } />
         </Routes>
