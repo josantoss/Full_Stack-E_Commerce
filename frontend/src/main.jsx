@@ -17,15 +17,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ErrorBoundary>
         <ThemeProvider>
           <AuthProvider>
-            <UserPreferencesProvider>
-              <CartProvider>
-                <WishlistProvider>
-                  <ComparisonProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <ComparisonProvider>
+                  <UserPreferencesProvider>
                     <App />
-                  </ComparisonProvider>
-                </WishlistProvider>
-              </CartProvider>
-            </UserPreferencesProvider>
+                  </UserPreferencesProvider>
+                </ComparisonProvider>
+              </WishlistProvider>
+            </CartProvider>
           </AuthProvider>
         </ThemeProvider>
       </ErrorBoundary>
