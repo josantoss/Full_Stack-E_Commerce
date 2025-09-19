@@ -39,23 +39,23 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <FaMapMarkerAlt className="w-6 h-6" />,
-      title: 'Address',
-      content: '123 Main Street, City, State 12345, Country'
+      title: 'Head Office',
+      content: 'Dembel City Center, 3rd Floor\nAddis Ababa, Ethiopia\nP.O. Box 12345'
     },
     {
       icon: <FaPhone className="w-6 h-6" />,
-      title: 'Phone',
-      content: '+1 (555) 123-4567'
+      title: 'Phone Numbers',
+      content: 'Main: +251 11 123 4567\nMobile: +251 93 409 9170\nToll Free: +251 800 123 456'
     },
     {
       icon: <FaEnvelope className="w-6 h-6" />,
-      title: 'Email',
-      content: 'info@aradabuy.com'
+      title: 'Email Addresses',
+      content: 'General: info@aradabuy.com\nSupport: support@aradabuy.com\nSales: sales@aradabuy.com'
     },
     {
       icon: <FaClock className="w-6 h-6" />,
       title: 'Business Hours',
-      content: 'Mon - Fri: 9:00 AM - 6:00 PM'
+      content: 'Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM\nSunday: Closed'
     }
   ];
 
@@ -64,9 +64,9 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact AradaBuy</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have questions or need assistance? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            We're here to help! Whether you have questions about our products, need support with an order, or want to partner with us, we'd love to hear from you. Our team is committed to providing excellent customer service.
           </p>
         </div>
 
@@ -162,8 +162,27 @@ const Contact = () => {
             <div>
               <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
               <p className="text-gray-600 mb-8">
-                We're here to help and answer any questions you might have. We look forward to hearing from you.
+                Connect with us through multiple channels. Our customer service team is available to assist you with any inquiries, technical support, or business partnerships. We typically respond within 24 hours during business days.
               </p>
+              
+              {/* Social Media Links */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a href="#" className="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <span className="text-sm font-semibold">f</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-blue-400 text-white rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+                    <span className="text-sm font-semibold">t</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-pink-600 text-white rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors">
+                    <span className="text-sm font-semibold">ig</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-blue-800 text-white rounded-lg flex items-center justify-center hover:bg-blue-900 transition-colors">
+                    <span className="text-sm font-semibold">in</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
@@ -174,7 +193,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
-                    <p className="text-gray-600">{info.content}</p>
+                    <p className="text-gray-600 whitespace-pre-line">{info.content}</p>
                   </div>
                 </div>
               ))}
@@ -198,25 +217,37 @@ const Contact = () => {
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h3 className="text-lg font-semibold mb-3">How can I track my order?</h3>
               <p className="text-gray-600">
-                Once your order ships, you'll receive a tracking number via email. You can also check your order status in your account dashboard.
+                Once your order ships, you'll receive a tracking number via email and SMS. You can also check your order status in your account dashboard or contact our support team.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-semibold mb-3">What is your return policy?</h3>
+              <h3 className="text-lg font-semibold mb-3">What is your return and exchange policy?</h3>
               <p className="text-gray-600">
-                We offer a 30-day return policy for most items. Products must be in original condition with all packaging intact.
+                We offer a 30-day return policy for most items. Products must be in original condition with all packaging intact. Exchanges are available for defective items.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-semibold mb-3">Do you ship internationally?</h3>
+              <h3 className="text-lg font-semibold mb-3">Do you deliver throughout Ethiopia?</h3>
               <p className="text-gray-600">
-                Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by location.
+                Yes, we deliver to all major cities and towns in Ethiopia. Delivery times vary by location, with Addis Ababa deliveries typically within 1-2 business days.
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-lg font-semibold mb-3">How can I contact customer support?</h3>
+              <h3 className="text-lg font-semibold mb-3">What payment methods do you accept?</h3>
               <p className="text-gray-600">
-                You can reach us through this contact form, email, or phone. Our support team is available during business hours.
+                We accept cash on delivery, bank transfers, mobile money (CBE Birr, M-Pesa), and major credit cards. All transactions are secure and encrypted.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-semibold mb-3">How can I become a seller on AradaBuy?</h3>
+              <p className="text-gray-600">
+                We welcome new sellers! Contact our business development team at sales@aradabuy.com or call +251 11 123 4567 to learn about our seller program and requirements.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-lg font-semibold mb-3">Do you offer bulk discounts?</h3>
+              <p className="text-gray-600">
+                Yes, we offer special pricing for bulk orders and business customers. Contact our sales team for custom quotes and volume discounts.
               </p>
             </div>
           </div>
